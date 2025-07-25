@@ -1,7 +1,7 @@
 module.exports = {
-  PAGE_ACCESS_TOKEN: EAAaNT2PL8cUBPG4Ao3dcKL81phxt2JlhCc8u75QmSVPi5ny3cn0cR0Th3zTvenhnXcxbf690TRNnWhJhpDoQQEvhdfhKsTL7JZAhITi8LgD7t7msKgSy4fXWhvo7sXaXDbYAW55z3D6JcMvVVXPcEz2r2eDtZAgzGIKXPSzcu9jSM6JZCDBzkWQxZBRmUAZCW5PVEcMALFAZDZD,
-  VERIFY_TOKEN:auto2001,
-  USER_ID: 24110537551888914,
+  PAGE_ACCESS_TOKEN: process.env.PAGE_ACCESS_TOKEN,
+  VERIFY_TOKEN: process.env.VERIFY_TOKEN,
+  USER_ID: process.env.USER_ID,
   MONGO_URI: process.env.MONGO_URI,
   TIMEZONE: 'Asia/Ho_Chi_Minh',
   FOREX_URL: 'https://www.forexfactory.com/calendar'
