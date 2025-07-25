@@ -1,22 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const { verifyWebhook, handleMessage } = require('./handlers/messageHandler');
-const { startJobs } = require('./services/scheduler');
+const messengerService = require('./services/messenger');
 
 const app = express();
 app.use(bodyParser.json());
 
-app.get('/webhook', verifyWebhook);
-app.post('/webhook', (req, res) => {
-  req.body.entry.forEach(entry => {
-    entry.messaging.forEach(event => {
-      if (event.message) handleMessage(event);
-    });
-  });
-  res.sendStatus(200);
+// Webhook xác minh & xử lý ở messengerService
+app.get('/webhook', messengerService.verifyWebhook);
+app.post('/webhook', messengerService.handleWebhook);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server chạy tại https://auto2001.onrender.com`);
 });
-
-app.get('/ping', (_, res) => res.send('pong 🐶'));
-startJobs();
-
-app.listen(process.env.PORT || 3000, () => console.log('Bot Cofure chạy rồi 🚀'));
